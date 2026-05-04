@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BEATS — Trap Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="logo/logo_beatz.png">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="teste.html">◼ BEATZZ</a>
+  <ul class="nav-links">
+    <li><a href="#beats">Catálogo</a></li>
+    <li><a href="#about">Contato</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text">TRAP</div>
+  <div class="hero-tag">Produtor independente · Sorocaba, SP</div>
+  <h1>BEATZZ<em>ORIGINALS</em></h1>
+  <p class="hero-sub">Trap, drill, Hard. Cada beat feito com intenção. Licença exclusiva ou não-exclusiva — você escolhe.</p>
+  <div class="hero-actions">
+    <a href="#beats" class="btn-primary">Ver catálogo</a>
+    <a href="#about" class="btn-secondary">Falar comigo</a>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num" id="beat-count">10</div>
+    <div class="stat-label">Beats disponíveis</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">BPM</div>
+    <div class="stat-label">130–160</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">WAV</div>
+    <div class="stat-label">Qualidade máxima</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">24h</div>
+    <div class="stat-label">Resposta garantida</div>
+  </div>
+</div>
+
+<section class="beats-section" id="beats">
+  <div class="section-header">
+    <span class="section-title">// Catálogo</span>
+    <span class="section-count" id="count-label">10 beats</span> 
+  </div>
+  <div class="beats-grid" id="beats-grid"></div>
+</section>
+
+<section class="about-section" id="about">
+  <div>
+    <div class="about-label">// Sobre</div>
+    <h2 class="about-title">Beats feitos com propósito</h2>
+    <p class="about-text">
+      Produtor independente de Sorocaba, SP. Faço trap, drill e variações desde [ano].
+      Cada beat tem identidade própria — sem loop de estoque, sem preset aleatório.
+      <br><br>
+      Manda mensagem, negocia, fecha. Simples assim.
+    </p>
+  </div>
+  <div>
+    <div class="contact-links">
+      <a class="contact-link" href="https://wa.me/5515991249383?text=Oi,%20vi%20seu%20site%20e%20quero%20comprar%20um%20beat" target="_blank" id="whatsapp-link">
+        <div class="contact-link-left">
+          <div>
+            <span class="contact-name">WhatsApp</span>
+            <span class="contact-handle">Resposta rápida</span>
+          </div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+      <a class="contact-link" href="https://instagram.com/leopacz" target="_blank" id="instagram-link">
+        <div class="contact-link-left">
+          <div>
+            <span class="contact-name">Instagram</span>
+            <span class="contact-handle">@leopacz</span>
+          </div>
+        </div>
+        <span class="contact-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 — Todos os beats são de propriedade do produtor até a venda da licença.</p>
+  <p>BEATS · Sorocaba SP</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-title">Comprar beat</div>
+    <div class="modal-beat" id="modal-beat-name">—</div>
+    <div class="modal-options" id="modal-options"></div>
+    <p class="modal-note">Após escolher a licença, você será redirecionado para o WhatsApp para finalizar o pedido. O arquivo WAV/MP3 é enviado após confirmação do pagamento.</p>
+  </div>
+</div>
+
+<!-- GLOBAL PLAYER -->
+<div class="global-player" id="global-player">
+  <div class="gp-info">
+    <div class="gp-name" id="gp-name">—</div>
+    <div class="gp-meta" id="gp-meta">—</div>
+  </div>
+  <div class="gp-controls">
+    <button class="gp-btn" onclick="prevBeat()">
+      <svg viewBox="0 0 12 12"><path d="M1 1v10M11 1L4 6l7 5V1z"/></svg>
+    </button>
+    <button class="gp-btn" id="gp-play-btn" onclick="toggleGlobalPlay()">
+      <svg id="gp-play-icon" viewBox="0 0 12 12"><path d="M2 1l9 5-9 5V1z"/></svg>
+    </button>
+    <button class="gp-btn" onclick="nextBeat()">
+      <svg viewBox="0 0 12 12"><path d="M11 1v10M1 1l7 5-7 5V1z"/></svg>
+    </button>
+  </div>
+  <div class="gp-progress">
+    <span class="gp-time" id="gp-current">0:00</span>
+    <div class="progress-bar" onclick="seekTo(event)" id="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <span class="gp-time" id="gp-duration">0:00</span>
+  </div>
+  <button class="gp-buy" onclick="openModalForCurrent()">Comprar este beat</button>
+</div>
+
+<audio id="audio-player"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
